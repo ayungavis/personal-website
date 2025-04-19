@@ -5,7 +5,7 @@ export default {
     {
       "slug": "ayungavis",
       "distDir": "dist",
-      "buildCommand": "pnpm run build"
+      "buildCommand": "bun run build"
     }
   ]
 } satisfies FleekConfig;
