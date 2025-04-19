@@ -4,7 +4,7 @@ import vercel from '@astrojs/vercel/serverless';
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  site: 'https://lexingtonthemes.com',
+  site: 'https://ayungavis.com',
   integrations: [tailwind(), sitemap()],
   output: 'server',
   adapter: vercel({
