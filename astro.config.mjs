@@ -1,13 +1,9 @@
-import { defineConfig } from 'astro/config';
-import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
-import vercel from '@astrojs/vercel/serverless';
+import tailwind from '@astrojs/tailwind';
+import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  site: 'https://lexingtonthemes.com',
+  site: 'https://ayungavis.com',
   integrations: [tailwind(), sitemap()],
-  output: 'server',
-  adapter: vercel({
-    analytics: true,
-  }),
+  output: 'static',
 });
