@@ -29,6 +29,12 @@ jobs:
       - name: Build project
         run: yarn run build
 
+      - name: Set short git commit SHA
+        id: vars
+        run: |
+          calculatedSha=$(git rev-parse --short ${{ github.sha }})
+          echo "COMMIT_SHORT_SHA=$calculatedSha" >> $GITHUB_ENV
+
       - name: Deploy to IPFS
         uses: ipfs/ipfs-deploy-action@v1
         id: deploy
@@ -37,4 +43,4 @@ jobs:
           storacha-key: ${{ secrets.STORACHA_KEY }}
           storacha-proof: ${{ secrets.STORACHA_PROOF }}
           github-token: ${{ github.token }}
-          pin-name:
+          pin-name: ${{ github.event.repository.name }}-${{ steps.vars.outputs.short_sha }}
