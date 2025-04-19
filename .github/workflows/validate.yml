@@ -15,21 +15,9 @@ jobs:
         node-version: [18.x]
     steps:
       - name: Check out repo
-        uses: actions/checkout@v4
-      - name: Configure yarn caching
-        uses: actions/cache@v4
-        with:
-          path: ~/.yarn
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/workflows/prettier.yml') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ matrix.node-version }}
-          cache: 'yarn'
-      - name: Install dependencies
-        run: yarn install
+        uses: actions/checkout@v2
+      - name: Install
+        uses: ./.github/actions/install
       # - name: Run prettier
       #   run: yarn run format
       # - name: Check linter
@@ -37,4 +25,4 @@ jobs:
       # - name: Run check types
       #   run: npm run check-types
       - name: Build the project
-        run: npm run build
+        run: bun run build
